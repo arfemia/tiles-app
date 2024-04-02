@@ -15,7 +15,7 @@ export type TilesContextState = {
   tiles: TileModel[];
   loading: boolean;
   error: Object | null;
-  refresh: VoidFunction;
+  refresh: () => Promise<any>;
   isInitialFetched: boolean;
 };
 
@@ -23,7 +23,7 @@ export const TilesContext = createContext<TilesContextState>({
   tiles: [],
   loading: false,
   error: null,
-  refresh: () => {},
+  refresh: async () => {},
   isInitialFetched: false,
 });
 

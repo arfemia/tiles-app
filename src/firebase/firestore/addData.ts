@@ -1,12 +1,18 @@
 import firebase_app from "../config";
-import { getFirestore, doc, setDoc, serverTimestamp } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  serverTimestamp,
+  collection,
+} from "firebase/firestore";
 
 // Get the Firestore instance
 const db = getFirestore(firebase_app);
 
 // Function to add data to a Firestore collection
 export default async function addData(
-  collection: string,
+  _collection: string,
   data: any,
   pid?: string,
   includeCreatedAt: boolean = false
@@ -20,7 +26,10 @@ export default async function addData(
 
   try {
     // Set the document with the provided data in the specified collection and ID
-    const ref = id.length === 0 ? doc(db, collection) : doc(db, collection, id);
+    const ref =
+      id.length === 0
+        ? doc(collection(db, _collection))
+        : doc(db, _collection, id);
 
     const tileData = { ...data, id: ref.id, updatedAt: serverTimestamp() };
 

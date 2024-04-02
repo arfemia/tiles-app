@@ -3,6 +3,7 @@
 import { useAuthContext } from "@/context/AuthContext";
 import { useTilesContext } from "@/context/TilesContext";
 import addData from "@/firebase/firestore/addData";
+import { TileType } from "@/models/TileModel";
 import { Timestamp } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -16,6 +17,10 @@ function Page(): JSX.Element {
 
   const { id } = useAuthContext();
 
+  const { refresh } = useTilesContext();
+
+  const toastId = "loading-tile-submit-id";
+
   const submitTile = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -24,11 +29,40 @@ function Page(): JSX.Element {
       return;
     }
 
+    toast.loading("Submitting Tile...", { toastId });
+
     try {
-      addData(`users/${id}/tiles`, {}, undefined, true);
+      const { result, error } = await addData(
+        `users/${id}/tiles`,
+        {
+          title,
+          description,
+          endDate: Timestamp.fromMillis(endDateTime),
+          author: id,
+          type: "onetime",
+        },
+        undefined,
+        true
+      );
+
+      if (error !== undefined && error != null) {
+        console.log(error);
+        toast.error("Error submitting tile, please try again");
+        return;
+      }
+
+      toast.success("Submitted Tile successfully");
+
+      refresh();
+
+      router.push("/admin");
     } catch (err) {
+      console.log(err);
+
       toast.error("Error submitting tile, please try again");
     }
+
+    toast.done(toastId);
   };
 
   return (

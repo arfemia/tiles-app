@@ -1,4 +1,5 @@
 "use client";
+import ShiftingCountdown from "@/components/CountDown";
 import { useAuthContext } from "@/context/AuthContext";
 import { useTilesContext } from "@/context/TilesContext";
 import { useRouter } from "next/navigation";
@@ -39,21 +40,21 @@ function Page(): JSX.Element {
       {tilesState.tiles.map((e) => (
         <div
           key={e.id}
-          className="bg-slate-900 mb-20 p-4  border-slate-700 border-[1px] rounded-xl shadow-md flex flex-col w-full max-w-2xl"
+          className="bg-slate-900 my-2 p-4  border-slate-700 border-[1px] rounded-xl shadow-md flex flex-col w-full max-w-2xl"
         >
           <h2 className="text-2xl font-bold">{e.title}</h2>
-          <p>{e.description}</p>
-          <i className="">
-            {"Updated At: " +
-              e.updatedAt.toDate().toLocaleDateString() +
-              ", " +
-              e.updatedAt.toDate().toLocaleTimeString()}
+          <p className="text-slate-300">{e.description}</p>
+
+          <b className="text-slate-300">
+            {"Due At: " + e.endDate.toDate().toLocaleString()}
+          </b>
+          {/* <ShiftingCountdown days={}></ShiftingCountdown> */}
+
+          <i className="text-slate-500">
+            {"Updated At: " + e.updatedAt.toDate().toLocaleString()}
           </i>
-          <i className="">
-            {"Created At: " +
-              e.createdAt.toDate().toLocaleDateString() +
-              ", " +
-              e.createdAt.toDate().toLocaleTimeString()}
+          <i className="text-slate-500">
+            {"Created At: " + e.createdAt.toDate().toLocaleString()}
           </i>
         </div>
       ))}

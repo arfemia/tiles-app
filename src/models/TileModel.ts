@@ -8,6 +8,7 @@ export type TileModelType = {
   createdAt: Timestamp;
   updatedAt: Timestamp;
   author: string;
+  endDate: Timestamp;
 };
 
 export class TileModel {
@@ -17,6 +18,7 @@ export class TileModel {
   type: TileType;
   createdAt: Timestamp;
   updatedAt: Timestamp;
+  endDate: Timestamp;
   author: string;
 
   constructor({
@@ -27,6 +29,7 @@ export class TileModel {
     createdAt,
     updatedAt,
     author,
+    endDate,
   }: TileModelType) {
     this.id = id;
     this.title = title;
@@ -35,6 +38,7 @@ export class TileModel {
     this.updatedAt = updatedAt;
     this.type = type;
     this.description = description;
+    this.endDate = endDate;
   }
 }
 
