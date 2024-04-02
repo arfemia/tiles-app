@@ -1,5 +1,5 @@
 import firebase_app from "../config";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 // Get the Firestore instance
 const db = getFirestore(firebase_app);
@@ -7,18 +7,30 @@ const db = getFirestore(firebase_app);
 // Function to add data to a Firestore collection
 export default async function addData(
   collection: string,
-  id: string,
-  data: any
+  data: any,
+  pid?: string,
+  includeCreatedAt: boolean = false
 ) {
   // Variable to store the result of the operation
   let result = null;
   // Variable to store any error that occurs during the operation
   let error = null;
 
+  const id = pid ?? "";
+
   try {
     // Set the document with the provided data in the specified collection and ID
-    result = await setDoc(doc(db, collection, id), data, {
-      merge: true, // Merge the new data with existing document data
+    const ref = id.length === 0 ? doc(db, collection) : doc(db, collection, id);
+
+    const tileData = { ...data, id: ref.id, updatedAt: serverTimestamp() };
+
+    const tileDateToUse = includeCreatedAt
+      ? { ...tileData, createdAt: serverTimestamp() }
+      : tileData;
+
+    // Merge the new data with existing document data
+    result = await setDoc(ref, tileDateToUse, {
+      merge: true,
     });
   } catch (e) {
     // Catch and store any error that occurs during the operation
