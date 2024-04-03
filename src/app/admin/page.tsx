@@ -1,5 +1,6 @@
 "use client";
 import ShiftingCountdown from "@/components/CountDown";
+import { TileCard } from "@/components/TileCard";
 import { useAuthContext } from "@/context/AuthContext";
 import { useTilesContext } from "@/context/TilesContext";
 import { useRouter } from "next/navigation";
@@ -37,26 +38,8 @@ function Page(): JSX.Element {
         </button>
       </div>
       <div className="bg-slate-700 w-full h-[1px] my-2  max-w-2xl"></div>
-      {tilesState.tiles.map((e) => (
-        <div
-          key={e.id}
-          className="bg-slate-900 my-2 p-4  border-slate-700 border-[1px] rounded-xl shadow-md flex flex-col w-full max-w-2xl"
-        >
-          <h2 className="text-2xl font-bold">{e.title}</h2>
-          <p className="text-slate-300">{e.description}</p>
-
-          <b className="text-slate-300">
-            {"Due At: " + e.endDate.toDate().toLocaleString()}
-          </b>
-          {/* <ShiftingCountdown days={}></ShiftingCountdown> */}
-
-          <i className="text-slate-500">
-            {"Updated At: " + e.updatedAt.toDate().toLocaleString()}
-          </i>
-          <i className="text-slate-500">
-            {"Created At: " + e.createdAt.toDate().toLocaleString()}
-          </i>
-        </div>
+      {tilesState.tiles.map((tile) => (
+        <TileCard tile={tile} key={tile.id} />
       ))}
     </div>
   );
