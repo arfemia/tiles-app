@@ -26,6 +26,10 @@ function Page(): JSX.Element {
     }
   }, [user, router, tilesState]); // Include 'router' in the dependency array to resolve eslint warning
 
+  const tiles = tilesState.tiles;
+
+  tiles.sort((a, b) => b.updatedAt.toMillis() - a.updatedAt.toMillis());
+
   return (
     <div className="flex flex-col items-center mx-8">
       <div className="flex flex-row w-full  justify-between max-w-2xl py-2 pl-4">
@@ -38,7 +42,7 @@ function Page(): JSX.Element {
         </button>
       </div>
       <div className="bg-slate-700 w-full h-[1px] my-2  max-w-2xl"></div>
-      {tilesState.tiles.map((tile) => (
+      {tiles.map((tile) => (
         <TileCard tile={tile} key={tile.id} />
       ))}
     </div>
