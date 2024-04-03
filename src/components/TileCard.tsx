@@ -9,7 +9,7 @@ export function TileCard({ tile }: { tile: TileModel }) {
       <div className="flex flex-row justify-between">
         <h2 className="text-2xl font-bold px-4 py-2 ">{tile.title}</h2>
         <button
-          className="bg-slate-900 rounded-xl px-2 hover:bg-slate-700 text-slate-500 font-mono"
+          className="bg-slate-900 rounded-xl px-2 hover:bg-slate-700 text-slate-500 font-mono text-xs"
           onClick={() => {
             toast.info("Coming Soon");
           }}
