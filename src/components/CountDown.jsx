@@ -55,7 +55,7 @@ const ShiftingCountdown = ({ date }) => {
 
 const CountdownItem = ({ num, text }) => {
   return (
-    <div className="font-mono w-1/6 h-12  flex flex-col gap-1  items-start justify-start  ">
+    <div className="font-mono w-1/4 sm:w-1/6 h-12  flex flex-col gap-1  items-start justify-start  ">
       <div className="w-full text-center relative overflow-hidden">
         <AnimatePresence mode="popLayout">
           <motion.span

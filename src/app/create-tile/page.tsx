@@ -104,7 +104,7 @@ function Page(): JSX.Element {
           ❌ Cancel
         </button>
         <button
-          className="bg-green-800 rounded-xl py-2 hover:bg-green-900 my-4 px-4"
+          className="bg-green-800 hover:bg-green-900 rounded-xl py-2  my-4 px-4"
           onClick={submitTile}
         >
           ☑️ Create Tile
