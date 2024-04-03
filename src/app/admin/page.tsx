@@ -35,10 +35,10 @@ function Page(): JSX.Element {
       <div className="flex flex-row w-full  justify-between max-w-2xl py-2 pl-4">
         <h1 className="text-3xl ">All Tiles</h1>
         <button
-          className="bg-slate-600 rounded-xl px-2 hover:bg-slate-700"
+          className=" rounded-xl px-2 bg-green-800 hover:bg-green-900"
           onClick={() => router.push("/create-tile")}
         >
-          ☑️ Create Tile
+          🗒 Create Tile
         </button>
       </div>
       <div className="bg-slate-700 w-full h-[1px] my-2  max-w-2xl"></div>
