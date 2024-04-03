@@ -29,7 +29,7 @@ function Page(): JSX.Element {
   return (
     <div className="flex flex-col items-center mx-8">
       <div className="flex flex-row w-full  justify-between max-w-2xl py-2 pl-4">
-        <h1 className="text-3xl ">Your Tiles</h1>
+        <h1 className="text-3xl ">All Tiles</h1>
         <button
           className="bg-slate-600 rounded-xl px-2 hover:bg-slate-700"
           onClick={() => router.push("/create-tile")}

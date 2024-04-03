@@ -44,20 +44,18 @@ const ShiftingCountdown = ({ date }) => {
   }, [handleCountdown]);
 
   return (
-    <div className=" mt-2">
-      <div className=" max-w-5xl  flex items-center ">
-        <CountdownItem num={remaining.days} text="days" />
-        <CountdownItem num={remaining.hours} text="hours" />
-        <CountdownItem num={remaining.minutes} text="minutes" />
-        <CountdownItem num={remaining.seconds} text="seconds" />
-      </div>
+    <div className=" max-w-5xl  flex items-center ">
+      <CountdownItem num={remaining.days} text="days" />
+      <CountdownItem num={remaining.hours} text="hours" />
+      <CountdownItem num={remaining.minutes} text="minutes" />
+      <CountdownItem num={remaining.seconds} text="seconds" />
     </div>
   );
 };
 
 const CountdownItem = ({ num, text }) => {
   return (
-    <div className="font-mono w-1/4 h-16  flex flex-col gap-1 md:gap-2 items-start justify-start  ">
+    <div className="font-mono w-1/6 h-12  flex flex-col gap-1  items-start justify-start  ">
       <div className="w-full text-center relative overflow-hidden">
         <AnimatePresence mode="popLayout">
           <motion.span
@@ -66,13 +64,13 @@ const CountdownItem = ({ num, text }) => {
             animate={{ y: "0%" }}
             exit={{ y: "-100%" }}
             transition={{ ease: "backIn", duration: 0.75 }}
-            className="block text-lg  text-white font-medium text-start"
+            className="block text-small  text-white  text-start"
           >
             {num}
           </motion.span>
         </AnimatePresence>
       </div>
-      <span className="text-xs md:text-sm lg:text-base font-light text-slate-400">
+      <span className="text-xs md:text-sm  font-light text-slate-400">
         {text}
       </span>
     </div>

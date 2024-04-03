@@ -18,19 +18,23 @@ export function TileCard({ tile }: { tile: TileModel }) {
         </button>
       </div>
       <Divider />
-      <p className=" px-4 text-slate-400 py-1">{tile.description}</p>
+      {tile.description?.length !== 0 && (
+        <p className=" px-4 text-slate-400 py-1 text-sm">{tile.description}</p>
+      )}
 
-      <b className="text-slate-300 px-4 py-1 ">
+      <b className=" px-4 py-1 text-slate-400">
         {"Due At: " + tile.endDate.toDate().toLocaleString()}
       </b>
-      <div className="px-4">
+
+      <Divider />
+
+      <div className="px-4 py-2">
         <ShiftingCountdown date={tile.endDate.toDate()}></ShiftingCountdown>
       </div>
-
-      <i className="text-slate-500 px-4 font-mono">
+      <i className="text-slate-500 px-4 font-mono text-sm">
         {"Updated At: " + tile.updatedAt.toDate().toLocaleString()}
       </i>
-      <i className="text-slate-500 px-4 font-mono pb-1">
+      <i className="text-slate-500 px-4 font-mono pb-1 text-sm">
         {"Created At: " + tile.createdAt.toDate().toLocaleString()}
       </i>
     </div>
