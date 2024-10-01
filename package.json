@@ -14,7 +14,7 @@
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.20",
     "eslint": "9.6.0",
-    "eslint-config-next": "14.2.7",
+    "eslint-config-next": "14.2.13",
     "firebase": "^10.13.1",
     "framer-motion": "^11.3.21",
     "next": "14.2.7",
