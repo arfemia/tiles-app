@@ -1,9 +1,12 @@
+"use client";
 import { TileModel } from "@/models/TileModel";
-import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 import ShiftingCountdown from "./CountDown";
 import { Divider } from "./Divider";
 
 export function TileCard({ tile }: { tile: TileModel }) {
+  const router = useRouter();
+
   return (
     <div className="bg-slate-900 my-2  border-slate-700 border-[1px] rounded-xl shadow-md flex flex-col w-full ">
       <div className="flex flex-row justify-between">
@@ -13,7 +16,7 @@ export function TileCard({ tile }: { tile: TileModel }) {
         <button
           className="bg-slate-900 rounded-xl px-2 hover:bg-slate-700 text-slate-500 font-mono text-sm"
           onClick={() => {
-            toast.info("Coming Soon");
+            router.push(`/edit-tile/${tile.id}`);
           }}
         >
           View
