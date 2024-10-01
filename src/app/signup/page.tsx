@@ -29,6 +29,7 @@ function Page(): JSX.Element {
 
     const body = {
       id: uid,
+      email: email,
     };
 
     const { result: userObjResult, error: userObjError } = await addData(

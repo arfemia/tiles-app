@@ -33,18 +33,21 @@ function Page(): JSX.Element {
   return (
     <div className="flex flex-col items-center mx-8">
       <div className="flex flex-row w-full  justify-between max-w-2xl py-2 pl-4">
-        <h1 className="text-3xl ">All Tiles</h1>
+        <h1 className="text-3xl font">All Tiles</h1>
         <button
-          className=" rounded-xl px-2 bg-green-800 hover:bg-green-900"
+          className=" rounded-xl px-2 bg-green-800 hover:bg-green-900 text-white"
           onClick={() => router.push("/create-tile")}
         >
           🗒 Create Tile
         </button>
       </div>
-      <div className="bg-slate-700 w-full h-[1px] my-2  max-w-2xl"></div>
-      {tiles.map((tile) => (
-        <TileCard tile={tile} key={tile.id} />
-      ))}
+      <div className="bg-slate-700 w-full h-[1px] my-2 "></div>
+
+      <div className="grid  grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+        {tiles.map((tile) => (
+          <TileCard tile={tile} key={tile.id} />
+        ))}
+      </div>
     </div>
   );
 }

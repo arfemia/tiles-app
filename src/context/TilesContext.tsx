@@ -38,6 +38,8 @@ export function TilesContextProvider({
   const [loading, setLoading] = useState(false);
   const [isInitialFetched, setIsInitialFetched] = useState(false);
 
+  const [currentTab, setCurrentTab] = useState();
+
   const [error, setError] = useState<any>(null);
   const [tiles, setTiles] = useState<TileModel[]>([]);
 

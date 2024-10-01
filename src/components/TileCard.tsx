@@ -5,9 +5,9 @@ import { Divider } from "./Divider";
 
 export function TileCard({ tile }: { tile: TileModel }) {
   return (
-    <div className="bg-slate-900 my-2  border-slate-700 border-[1px] rounded-xl shadow-md flex flex-col w-full max-w-2xl">
+    <div className="bg-slate-900 my-2  border-slate-700 border-[1px] rounded-xl shadow-md flex flex-col w-full ">
       <div className="flex flex-row justify-between">
-        <h2 className="text-xl sm:text-2xl font-bold px-4 py-2 ">
+        <h2 className="text-xl sm:text-2xl font-bold px-4 py-2 text-white">
           {tile.title}
         </h2>
         <button
@@ -16,7 +16,7 @@ export function TileCard({ tile }: { tile: TileModel }) {
             toast.info("Coming Soon");
           }}
         >
-          Edit
+          View
         </button>
       </div>
       <Divider />
@@ -28,11 +28,11 @@ export function TileCard({ tile }: { tile: TileModel }) {
         <ShiftingCountdown date={tile.endDate.toDate()}></ShiftingCountdown>
       </div>
 
-      <Divider className="mt-2" />
+      {/* <Divider className="mt-2" />
 
       {tile.description?.length !== 0 && (
         <p className=" px-4 text-slate-400 py-1 text-sm">{tile.description}</p>
-      )}
+      )} */}
 
       <i className="text-slate-500 px-4 font-mono text-xs  md:text-sm py-1 sm:py-2">
         {"Last Updated: " + tile.updatedAt.toDate().toLocaleString()}

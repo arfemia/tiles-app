@@ -73,7 +73,7 @@ function Page(): JSX.Element {
         <label className="">Title</label>
         <input
           placeholder="Enter title"
-          className=" border-slate-700 rounded bg-slate-800 w-full my-1 px-2"
+          className=" border-slate-700 rounded bg-slate-800 w-full my-1 px-2 text-white"
           type={"text"}
           onChange={(e) => setTitle(e.target.value)}
         ></input>
@@ -83,7 +83,7 @@ function Page(): JSX.Element {
         <textarea
           placeholder="Add your task description/notes here"
           aria-multiline={true}
-          className="bg-slate-800 h-20 w-full my-1 px-2"
+          className="bg-slate-800 h-20 w-full my-1 px-2 text-white"
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
       </div>
@@ -91,20 +91,20 @@ function Page(): JSX.Element {
         <label className="my-4">End Date</label>
 
         <input
-          className="bg-slate-800 w-full my-1 px-2"
+          className="bg-slate-800 w-full my-1 px-2 text-white"
           onChange={(e) => setEndDateTime(Date.parse(e.target.value))}
           type={"datetime-local"}
         ></input>
       </div>
       <div className="flex flex-row justify-between w-full  max-w-2xl my-4">
         <button
-          className="bg-slate-700 rounded-xl py-2 hover:bg-slate-800 my-4 px-4"
+          className="bg-slate-700 rounded-xl py-2 hover:bg-slate-800 my-4 px-4 text-white"
           onClick={() => router.back()}
         >
           ❌ Cancel
         </button>
         <button
-          className="bg-green-800 hover:bg-green-900 rounded-xl py-2  my-4 px-4"
+          className="bg-green-800 hover:bg-green-900 rounded-xl py-2  my-4 px-4 text-white"
           onClick={submitTile}
         >
           ☑️ Create Tile
